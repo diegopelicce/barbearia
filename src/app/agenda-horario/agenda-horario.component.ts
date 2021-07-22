@@ -28,9 +28,7 @@ export class AgendaHorarioComponent implements OnInit {
   }
 
   onSubmit(): void {
-    debugger;
-    this.form
-    this.fb;
+    //Regras
   };
 
   ngOnInit(): void {
