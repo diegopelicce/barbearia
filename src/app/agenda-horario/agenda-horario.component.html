@@ -1,0 +1,73 @@
+<div class="container" style="width: 70%;">
+    <div></div>
+    <div>
+        <div class="row align-items-center">
+            <div class="col-6 h5 align-items-start">
+                AGENDAMENTO - BARBEARIA
+            </div>
+    
+            <div class="col-6" style="text-align: end;">
+                <i class="fa-solid fa-left-long"></i>
+                <button mat-button color="primary">Voltar</button>
+            </div>
+
+            <form [formGroup]="form">
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-label>Nome</mat-label>
+                            <input matInput formControlName="nome" required placeholder="Nome">
+                        </mat-form-field>
+                    </div>
+            
+                    <div class="col-6">
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-label>E-mail</mat-label>
+                            <input matInput type="email" placeholder="E-mail"
+                            formControlName="email" required width="100%">
+                        </mat-form-field>
+                    </div>
+            
+                    <div class="col-12">
+                        <mat-form-field appearance="outline" style="width: 49%;">
+                            <mat-label>CPF</mat-label>
+                            <input matInput [mask]="'000.000.000-99'" placeholder="CPF"
+                            minlength="11" formControlName="cpf" required>
+                        </mat-form-field>
+                    </div>
+                    
+                    <div class="col-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Barbeiro</mat-label>
+                            <mat-select formControlName="idAgendaBarbeiro" (selectionChange)="filtrarDataBarbeiro($event)">
+                                <mat-option *ngFor="let barbeiro of listaBarbeiro" value={{barbeiro.id_user}} >{{barbeiro.nome_user}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+            
+                    <div class="col-6">
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Data</mat-label>
+                            <mat-select formControlName="datePickerform" (selectionChange)="filtrarHorarioBarbeiro($event)">
+                                <mat-option *ngFor="let obj of dataFiltrada" value="{{obj.data}}">{{obj.data}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+            
+                        <mat-form-field appearance="outline">
+                            <mat-label>Horários Disponíveis</mat-label>
+                            <mat-select formControlName="horarioControl">
+                            <mat-option *ngFor="let obj of horarioFiltrada" value="{{obj.horario}}">{{obj.horario}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    
+                    <div class="col-12">
+                        <button mat-flat-button (click)="onSubmit()" type="submit" color="primary">Salvar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div></div>
+</div>
